@@ -2,7 +2,7 @@ let playerScore = 0;
 let computerScore = 0;
 let roundWinner = '';
 
-let playerSelection = 'rock';
+let playerSelection = prompt("rock, paper, or scissors?");
 //let computerSelection = getComputerChoice();
 
 function playRound(playerSelection) {
@@ -22,9 +22,9 @@ function playRound(playerSelection) {
         playerScore++;
         roundWinner = 'player';
        }
-        console.log("You chose " + playerSelection);
-        console.log("The computer chose " + computerSelection);
-        console.log(roundWinner);
+        //console.log("You chose " + playerSelection);
+        //console.log("The computer chose " + computerSelection);
+        //console.log(roundWinner);
         //return roundWinner;
 }
 
@@ -39,25 +39,30 @@ function getComputerChoice(){
         case 2:
             return 'scissors';
     }
-    console.log(getComputerChoice);
+    //console.log(getComputerChoice);
 }
 
 function game(){
     playRound(playerSelection);
     if (roundWinner === 'tie'){
-        console.log("It's a tie! Try again.");
+        console.log("You both chose " + playerSelection + ". It's a tie! Try again.");
     }
     else if (roundWinner === 'computer'){
-        console.log(playerSelection + " loses to " + getComputerChoice() + ". Choose again!");
+        console.log("You lose... " + playerSelection + " loses to " + getComputerChoice() + ". Choose again!");
     }
     else if (roundWinner === 'player'){
-        console.log(playerSelection + " beats " + getComputerChoice() + "! Double down?");
+        console.log("You win! " + playerSelection + " beats " + getComputerChoice() + "! Double down?");
     }
+    console.log("You chose " + playerSelection);
+    console.log("The computer chose " + getComputerChoice());
     gameOver();
 }
 
 function gameOver(){
-    if (computerScore === 5 || playerScore === 5){
-        console.log("Game over.")
+    if (computerScore === 5){
+        console.log("You lose. Game over.");
+    }
+    else if (playerScore === 5){
+        console.log("You've won! Rematch?");
     }
 }
