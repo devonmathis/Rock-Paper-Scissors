@@ -13,17 +13,19 @@ function playRound(playerSelection) {
     if ((computerSelection === 'rock' && playerSelection === 'scissors') ||
         (computerSelection === 'scissors' && playerSelection === 'paper') ||
         (computerSelection === 'paper' && playerSelection === 'rock')) {
+        computerScore++;
         roundWinner = 'computer';
        }
     if ((playerSelection === 'rock' && computerSelection === 'scissors') ||
         (playerSelection === 'scissors' && computerSelection === 'paper') ||
         (playerSelection === 'paper' && computerSelection === 'rock')) {
+        playerScore++;
         roundWinner = 'player';
        }
         console.log("You chose " + playerSelection);
         console.log("The computer chose " + computerSelection);
         console.log(roundWinner);
-        return roundWinner;
+        //return roundWinner;
 }
 
 function getComputerChoice(){
@@ -41,7 +43,21 @@ function getComputerChoice(){
 }
 
 function game(){
-    if (roundWinner == 'tie'){
-        console.log()
+    playRound(playerSelection);
+    if (roundWinner === 'tie'){
+        console.log("It's a tie! Try again.");
+    }
+    else if (roundWinner === 'computer'){
+        console.log(playerSelection + " loses to " + getComputerChoice() + ". Choose again!");
+    }
+    else if (roundWinner === 'player'){
+        console.log(playerSelection + " beats " + getComputerChoice() + "! Double down?");
+    }
+    gameOver();
+}
+
+function gameOver(){
+    if (computerScore === 5 || playerScore === 5){
+        console.log("Game over.")
     }
 }
