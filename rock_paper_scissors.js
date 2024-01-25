@@ -3,28 +3,24 @@ let computerScore = 0;
 let roundWinner = '';
 let roundDecision;
 
-//let computerSelection = getComputerChoice();
-
-function getComputerChoice(){
+function getComputerChoice() {
     let choices = Math.floor(Math.random() * 3);
-    switch(choices){
+    switch (choices) {
         case 0:
             return 'rock';
         case 1:
             return 'paper';
         case 2:
             return 'scissors';
+        default:
+            break;
     }
-    //console.log(getComputerChoice);
 }
 
-let playerSelection = prompt("rock, paper, or scissors?");
-//let computerSelection = getComputerChoice();
-
-function playRound(playerSelection) {
-    //let playerSelection = prompt("rock, paper, or scissors?");
-    let computerSelection = getComputerChoice();
-    if (computerSelection === playerSelection){
+function playRound(playerSelection, computerSelection) {
+    //let playerSelection;
+    //let computerSelection = getComputerChoice();
+    if (computerSelection === playerSelection) {
         roundWinner = 'tie';
         roundDecision = "You both chose " + playerSelection + ". It's a tie! Try again.";
     }
@@ -42,33 +38,69 @@ function playRound(playerSelection) {
         roundWinner = 'player';
         roundDecision = "You win! " + playerSelection + " beats " + computerSelection + "! Go again?";
     }
-        //console.log("You chose " + playerSelection);
-        //console.log("The computer chose " + computerSelection);
-        //console.log(roundWinner);
-        return roundWinner, roundDecision;
-}
-
-function game(){
-    playRound(playerSelection);
-    if (roundWinner === 'tie'){
-        console.log(roundDecision);
-    }
-    else if (roundWinner === 'computer'){
-        console.log(roundDecision);
-    }
-    else if (roundWinner === 'player'){
-        console.log(roundDecision);
-    }
-    //console.log("You chose " + playerSelection);
-    //console.log("The computer chose " + `${playRound.computerSelection}`);
-    gameOver();
+    return roundWinner, roundDecision;
 }
 
 function gameOver(){
-    if (computerScore === 5){
-        console.log("You lost it all. Game over.");
+    return playerScore == 5 || computerScore == 5;
+}
+
+//UI
+
+const scoreInfo = document.querySelector('.scoreBox');
+const playerScorePara = document.querySelector('.playerScore');
+const computerScorePara = document.querySelector('.computerScore');
+const rockBtn = document.querySelector('.rock');
+const paperBtn = document.querySelector('.paper');
+const scissorsBtn = document.querySelector('.scissors');
+
+rockBtn.addEventListener('click', () => handleClick('rock'));
+paperBtn.addEventListener('click', () => handleClick('paper'));
+scissorsBtn.addEventListener('click', () => handleClick('scissors'));
+
+function handleClick(playerSelection){
+    if (gameOver()){
+        //insert logic for the game over screen
     }
-    else if (playerScore === 5){
-        console.log("You've won! Rematch?");
+
+    const computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
+    updateChoices(playerSelection, computerSelection);
+    updateScore();
+
+    if (gameOver()){
+        //insert logic for the game over screen
     }
 }
+
+function updateChoices(){ 
+    switch (playerSelection){
+        case 'rock':
+            return 'rock';
+        case 'paper':
+            return 'paper';
+        case 'scissors':
+            return 'scissors';
+    }
+}
+
+function updateScore(){
+    if(roundWinner == 'tie'){
+        //
+    }
+    else if(roundWinner == 'player'){
+        //
+    }
+    else if(roundWinner == 'computer'){
+        //
+    }
+}
+
+/*const weapons = document.querySelectorAll('.weaponArena');
+weapons.forEach((weapons) =>
+    weapons.addEventListener('click', () => {
+        if (playerScore == 5 || computerScore == 5) {
+            return;
+        }
+    })
+);*/
