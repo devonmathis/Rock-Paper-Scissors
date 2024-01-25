@@ -1,11 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <script src="rock_paper_scissors.js"></script>
+    <header class="header">
+        <h1>Welcome to Rock, Paper, Scissors</h1>
+    </header>
+
+    <main class="main">
+        <div class="scoreboard">
+            <h3 class="scoreboardMessage">Best of 5 battle</h3>
+            <div id="scoreContainer">
+                <div class="scoreBox">
+                    <p class="playerScore">Player Score: </p>
+                </div>
+                <div class="scoreBox">
+                    <p class="computerScore">Computer Score: </p>
+                </div>
+            </div>
+        </div> 
+
+        <h2>Choose your weapon</h2>
+        <div class="weaponArena">
+            <button class="rock">
+                <p>Rock</p>
+            </button>
+            <button class="paper">
+                <p>Paper</p>
+            </button>
+            <button class="scissors">
+                <p>Scissors</p>
+            </button>
+        </div>
+    </main>
+
 </body>
+<script src="rock_paper_scissors.js"></script>
+
 </html>
