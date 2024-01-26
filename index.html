@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <title>Rock, Paper, Scissors</title>
 </head>
 
 <body>
@@ -14,18 +15,19 @@
 
     <main class="main">
         <div class="scoreboard">
-            <h3 class="scoreboardMessage">Best of 5 battle</h3>
-            <div id="scoreContainer">
+            <h2 class="scoreboardMessage"></h2>
+            <div class="scoreContainer">
                 <div class="scoreBox">
-                    <p class="playerScore">Player Score: </p>
+                    <div class="playerSign"></div>
+                    <p class="playerScore">Player: 0</p>
                 </div>
                 <div class="scoreBox">
-                    <p class="computerScore">Computer Score: </p>
-                </div>
+                    <div class="computerSign"></div>
+                    <p class="computerScore">Computer: 0</p>
             </div>
         </div> 
 
-        <h2>Choose your weapon</h2>
+        <h3>Choose your weapon</h3>
         <div class="weaponArena">
             <button class="rock">
                 <p>Rock</p>
@@ -38,7 +40,11 @@
             </button>
         </div>
     </main>
-
+    <div class="modal" id="endgameModal">
+        <p class="modalMessage" id="endgameMsg"></p>
+        <button class="restartBtn" id="restartBtn">Play again</button>
+      </div>
+      <div class="overlay" id="overlay"></div>  
 </body>
 <script src="rock_paper_scissors.js"></script>
 
